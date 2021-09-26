@@ -3,15 +3,12 @@ include_once 'header.php';
 ?>
 
 <section class="signup-form">
-    <h2>Sign up</h2>
+    <h2>Log In</h2>
     <div class="signup-form-form">
-        <form action="signup.inc.php" method="post">
-            <input type="text" name="name" placeholder="Full Name">
-            <input type="text" name="email" placeholder="Email" >
-            <input type="text" name="uid" placeholder="Username" >
+        <form action="includes/login.inc.php" method="post">
+            <input type="text" name="name" placeholder="Username or Email">
             <input type="password" name="pwd" placeholder="Password" >
-            <input type="password" name="pwdrepeat" placeholder="Repeat Password">
-            <button type="submit" name="submit">Sign Up</button
+            <button type="submit" name="submit">Log In</button>
         </form>
     </div>
 </section>
