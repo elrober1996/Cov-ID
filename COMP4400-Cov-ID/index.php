@@ -4,24 +4,24 @@
 ?>
 
 <section class="index-intro">
-  <h1>This Is An Introduction</h1>
-  <p>Here is an important paragraph that explains the purpose of the website and why you are here!</p>
+  <h1>Welcome to Cov-ID</h1>
+  <p>The purpose of this website is to help keep track of covid on certain community, be it schools, universities, workplace, etc.
+      Part of the functionality of this page is for self-reporting, either by giving a covid negative test or their vaccination status card.
+      For the negative test there should be at least once a week depending on the person interaction with a physical location of the community.
+      In addition to that a potential area of reporting and information so that people can be informed about their community and make educated decisions regarding their health.</p>
 </section>
 
 <section class="index-categories">
-  <h2>Some Basic Categories</h2>
+  <h2>Focus</h2>
   <div class="index-categories-list">
     <div>
-      <h3>Fun Stuff</h3>
+      <h3>Self-Reporting</h3>
     </div>
     <div>
-      <h3>Serious Stuff</h3>
+      <h3>Covid Tracking</h3>
     </div>
     <div>
-      <h3>Exciting Stuff</h3>
-    </div>
-    <div>
-      <h3>Boring Stuff</h3>
+      <h3>Educational</h3>
     </div>
   </div>
 </section>

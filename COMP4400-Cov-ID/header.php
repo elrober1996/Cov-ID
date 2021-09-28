@@ -17,11 +17,11 @@
     <!--A quick navigation-->
     <nav>
       <div class="wrapper">
-        <a href="index.php"><img src="img/logo-white.png" alt="Blogs logo"></a>
+<!--        <a href="index.php"><img src="img/logo-white.png" alt="Blogs logo"></a>-->
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="discover.php">About Us</a></li>
-          <li><a href="blog.php">Find Blogs</a></li>
+<!--          <li><a href="discover.php">About Us</a></li>-->
+<!--          <li><a href="blog.php">Find Blogs</a></li>-->
             <li><a href="signup.php">Sign up</a></li>
             <!--            --><?php
 //            if (isset($_SESSION["useruid"])) {
