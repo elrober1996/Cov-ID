@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  session_start(); // needed for the session to strat in every page
   include_once 'includes/functions.inc.php';
 ?>
 
@@ -19,20 +19,18 @@
       <div class="wrapper">
 <!--        <a href="index.php"><img src="img/logo-white.png" alt="Blogs logo"></a>-->
         <ul>
-          <li><a href="index.php">Home</a></li>
-<!--          <li><a href="discover.php">About Us</a></li>-->
-<!--          <li><a href="blog.php">Find Blogs</a></li>-->
-            <li><a href="signup.php">Sign up</a></li>
-            <!--            --><?php
-//            if (isset($_SESSION["useruid"])) {
-//              echo "<li><a href='profile.php'>Profile Page</a></li>";
-//              echo "<li><a href='logout.php'>Logout</a></li>";
-//            }
-//            else {
-//              echo "<li><a href='signup.php'>Sign up</a></li>";
-//              echo "<li><a href='login.php'>Log in</a></li>";
-//            }
-//          ?>-->
+            <li><a href="index.php">Home</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <?php
+                if(isset($_SESSION["useruid"])){
+                    echo "<li><a href='profile.php'>Profile Page</a></li>";
+                    echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
+                }
+                else{
+                    echo "<li><a href='signup.php'>Sign up</a></li>";
+                    echo "<li><a href='login.php'>Log In</a></li>";
+                }
+          ?>
         </ul>
       </div>
     </nav>

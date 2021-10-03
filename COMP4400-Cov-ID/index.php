@@ -4,6 +4,11 @@
 ?>
 
 <section class="index-intro">
+    <?php
+        if(isset($_SESSION["useruid"])){
+            echo "<p>Hello there " . $_SESSION["useruid"] ."</p>";
+        }
+    ?>
   <h1>Welcome to Cov-ID</h1>
   <p>The purpose of this website is to help keep track of covid on certain community, be it schools, universities, workplace, etc.
       Part of the functionality of this page is for self-reporting, either by giving a covid negative test or their vaccination status card.
