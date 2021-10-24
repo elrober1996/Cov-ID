@@ -106,7 +106,7 @@ section {
 
 /* sign up */
 
-.signup-form-form {
+.signup-form-form, .profile-form {
   display: flex;
   justify-content: center;
 }
@@ -132,4 +132,9 @@ section {
   padding: 10px 20px;
   margin: 10px auto;
   cursor: pointer;
+}
+
+iframe{
+  width: 500px;
+  height: 500px;
 }

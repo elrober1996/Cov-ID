@@ -14,10 +14,12 @@ include_once 'header.php';
             <button type="submit" name="submit">Sign Up</button>
         </form>
     </div>
+<!--    Maybe we can put did error in a pop message instead of like this, bootstrap does have away to do this.-->
     <?php
+    // Catches the error sent by signup .inc.php
     if(isset($_GET["error"])){
         if($_GET["error"] == "emptyinput"){
-            echo "<p>Fill in all field!</p>";
+            echo "<p>Fill in all fields!</p>";
         }
         else if ($_GET["error"] == "invaliduid"){
             echo "<p>Fill in username!</p>";

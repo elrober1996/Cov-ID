@@ -11,6 +11,17 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
     return $result;
 }
 
+function emptyInputProfile($age, $ethnicity, $race, $address){
+    $result;
+    if(empty($age) || empty($ethnicity) || empty($race) || empty($address)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
 function invalidUid($username){
     $result;
 
@@ -85,6 +96,8 @@ function createUser($conn, $name, $email, $username, $pwd){
     header("location: ../signup.php?error=none");
     exit();
 }
+
+// Need to make a creation medical record function method
 
 function emptyInputLogin($username, $pwd){
     $result;
