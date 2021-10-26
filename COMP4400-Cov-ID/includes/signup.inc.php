@@ -37,6 +37,8 @@ if (isset($_POST["submit"])){
     }
 
     createUser($conn, $name, $email, $username, $pwd);
+//    $usersId = mysqli_insert_id($conn);
+//    createMedicalRecord($conn, 0, 0, '', '', '', '', '1900-01-01');
 }
 else {
     header("location: ../signup.php");

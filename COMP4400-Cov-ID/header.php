@@ -30,6 +30,7 @@
                 if(isset($_SESSION["useruid"])){
                     echo "<li><a href='profile.php'>Profile Page</a></li>";
                     echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
+                    echo "<li>Hello, ". $_SESSION["useruid"]."!</li>";
                 }
                 else{
                     echo "<li><a href='signup.php'>Sign up</a></li>";
@@ -39,6 +40,7 @@
         </ul>
       </div>
     </nav>
+
 
 <!--A quick wrapper to align the content (ends in footer.php)-->
 <div class="wrapper">

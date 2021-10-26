@@ -11,9 +11,9 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
     return $result;
 }
 
-function emptyInputProfile($age, $ethnicity, $race, $address){
+function emptyInputProfile($age, $ethnicity, $race, $address, $birthdate){
     $result;
-    if(empty($age) || empty($ethnicity) || empty($race) || empty($address)){
+    if(empty($age) || empty($ethnicity) || empty($race) || empty($address) || empty($birthdate)){
         $result = true;
     }
     else{
@@ -98,6 +98,21 @@ function createUser($conn, $name, $email, $username, $pwd){
 }
 
 // Need to make a creation medical record function method
+function createMedicalRecord($conn, $usersId, $age, $ethnicity, $race, $address, $image_location, $birthdate){
+    $sql = "INSERT INTO medical_record (usersId, age, ethnicity, race, address,image_location, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+
+    // Passes the data to the already validated statement, ss stands for strings/text
+    mysqli_stmt_bind_param($stmt, "iisssss", $usersId, $age, $ethnicity, $race, $address, $image_location, $birthdate);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../profile.php?error=none");
+    exit();
+}
 
 function emptyInputLogin($username, $pwd){
     $result;

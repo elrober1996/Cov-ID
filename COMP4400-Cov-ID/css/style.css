@@ -63,7 +63,7 @@ nav ul li {
   float: left;
 }
 
-nav ul li a {
+nav ul li a, nav ul li {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 14px;
