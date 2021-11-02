@@ -1,7 +1,9 @@
 <?php
 include_once 'header.php';
 ?>
-
+    <div>
+        <h1>Medical Record Form</h1>
+    </div>
 <!--    remember to add birthdate to both the form and the column in medical_record-->
     <section class="signup-form">
         <div class="profile-form">
@@ -13,11 +15,11 @@ include_once 'header.php';
 <!--                </div>-->
                 <div class="mb-3">
                     <label for="agebox" class="form-label">Age</label>
-                    <input type="number" class="form-control" id="agebox" name="age" placeholder="Enter your age" rows="3"/>
+                    <input type="number" class="form-control" id="agebox" min="0" name="age" placeholder="Enter your age" rows="3"/>
                 </div>
                 <div class="mb-3">
                     <label for="birthdate" class="form-label">Birthdate</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthdate">
+                    <input type="date" class="form-control" id="birthdate"  name="birthdate">
                 </div>
 <!--                <div class="mb-3">-->
 <!--                    <label for="enthnicity"-->
@@ -53,6 +55,26 @@ include_once 'header.php';
                     <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" >
                 </div>
+                <div class="mb-3">
+                    <label for="vaccinetype" class="form-label">Vaccine Type (If applies):</label>
+                    <select class="form-select" aria-label="Default select example" id="vaccinetype" name="vaccinetype">
+                        <option selected>Select Race</option>
+                        <option value="pfizer">Pfizer</option>
+                        <option value="moderna">Moderna</option>
+                        <option value="j&j">Johnson & Johnson</option>
+                        <option value="n/a">N/A</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="dosis" class="form-label">Vaccine Type (If applies):</label>
+                    <select class="form-select" aria-label="Default select example" id="dosis" name="dosis">
+                        <option selected>Select Race</option>
+                        <option value="first-dosis">First Dosis</option>
+                        <option value="second-dosis">Second Dosis</option>
+                        <option value="booster-dosis">Booster Dosis</option>
+                        <option value="n/a">N/A</option>
+                    </select>
+                </div>
 <!--                <input type="image" class="form-control" name="image_location"/>-->
                 <button type="submit"  class="btn btn-primary" name="submit">Create Medical Record</button>
             </form>
@@ -65,6 +87,15 @@ include_once 'header.php';
             }
             else if ($_GET["error"] == "stmtfailed"){
                 echo "<p>Something happened try again!</p>";
+            }
+            else if ($_GET["error"] == "stmtfailedprepare"){
+                echo "<p>Prepare Statement failed!</p>";
+            }
+            else if ($_GET["error"] == "stmtfailedbind"){
+                echo "<p>Bind Statement failed!</p>";
+            }
+            else if ($_GET["error"] == "recordexist"){
+                echo "<p>Record Exists!</p>";
             }
             else if ($_GET["error"] == "norow"){
                 echo "<p>No medical records!</p>";

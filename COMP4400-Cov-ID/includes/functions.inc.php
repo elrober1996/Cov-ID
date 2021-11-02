@@ -11,9 +11,9 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
     return $result;
 }
 
-function emptyInputProfile($age, $ethnicity, $race, $address, $birthdate){
+function emptyInputProfile($age, $ethnicity, $race, $address, $birthdate, $vaccinetype, $dosis){
     $result;
-    if(empty($age) || empty($ethnicity) || empty($race) || empty($address) || empty($birthdate)){
+    if(empty($age) || empty($ethnicity) || empty($race) || empty($address) || empty($birthdate) || empty($vaccinetype) || empty($dosis)){
         $result = true;
     }
     else{
@@ -80,6 +80,49 @@ function uidExists($conn, $username, $email){
     mysqli_stmt_close($stmt);
 }
 
+function idExists($conn, $username, $email){
+    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+    // Passes the data to the already validated statement, ss stands for strings/text
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($resultData)){ // we are gonna use the data returned by the condition inside the if
+        return $row;
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function recordExist($conn, $userid){
+    $sql = "SELECT * FROM medical_record WHERE  usersId = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "i",$userid);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    $resultCheck = mysqli_num_rows($resultData);
+    if($resultCheck > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 function createUser($conn, $name, $email, $username, $pwd){
     $sql = "INSERT INTO users (usersname, usersemail, usersUid, usersPwd) VALUES (?, ?, ?, ?) ;";
     $stmt = mysqli_stmt_init($conn);
@@ -98,8 +141,8 @@ function createUser($conn, $name, $email, $username, $pwd){
 }
 
 // Need to make a creation medical record function method
-function createMedicalRecord($conn, $usersId, $age, $ethnicity, $race, $address, $image_location, $birthdate){
-    $sql = "INSERT INTO medical_record (usersId, age, ethnicity, race, address,image_location, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?);";
+function createMedicalRecord($conn, $usersId, $age, $ethnicity, $race, $address, $image_location, $birthdate, $vaccinetype, $dosis){
+    $sql = "INSERT INTO medical_record (usersId, age, ethnicity, race, address,image_location, birthdate, vaccineType, dosis) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../profile.php?error=stmtfailed");
@@ -107,11 +150,56 @@ function createMedicalRecord($conn, $usersId, $age, $ethnicity, $race, $address,
     }
 
     // Passes the data to the already validated statement, ss stands for strings/text
-    mysqli_stmt_bind_param($stmt, "iisssss", $usersId, $age, $ethnicity, $race, $address, $image_location, $birthdate);
+    if(!mysqli_stmt_bind_param($stmt, "iisssssss", $usersId, $age, $ethnicity, $race, $address, $image_location, $birthdate, $vaccinetype, $dosis)){
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../profile.php?error=none");
     exit();
+}
+
+function createSideEffectRecord($conn, $usersid, $vaccineType, $locationTakenName, $locationTaken, $dosis, $sideEffect, $undescribedEffect){
+    $sql = "INSERT INTO side_effects (usersid, vaccineType, locationTakenName, locationTaken, dosis, sideEffect, undescribedEffect) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../vaccinereport.php?error=stmtfailed");
+        exit();
+    }
+
+    // Passes the data to the already validated statement, ss stands for strings/text
+    mysqli_stmt_bind_param($stmt, "issssss", $usersid, $vaccineType, $locationTakenName, $locationTaken, $dosis, $sideEffect, $undescribedEffect);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../vaccinereport.php?error=none");
+    exit();
+}
+
+//function createRecordTest($conn, $usersId, $age, $ethnicity, $race, $address, $bithdate, $vaccinetype, $dosis ){
+//    $sql = "INSERT INTO record_test (userID, age, ethnicity, race, address, bithdate, vaccineType, dosis) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+//    $stmt = mysqli_stmt_init($conn);
+//    if (!mysqli_stmt_prepare($stmt, $sql)){
+//        header("location: ../profile.php?error=stmtfailedprepare");
+//        exit();
+//    }
+//
+//    // Passes the data to the already validated statement, ss stands for strings/text
+//    if(!mysqli_stmt_bind_param($stmt, "iissssss", $usersId, $age, $ethnicity, $race, $address, $bithdate, $vaccinetype, $dosis)){
+//        header("location: ../profile.php?error=stmtfailedbind");
+//        exit();
+//    }
+//    mysqli_stmt_execute($stmt);
+//    mysqli_stmt_close($stmt);
+//    header("location: ../profile.php?error=none");
+//    exit();
+//}
+
+function emptySideEffect($vaccineType, $locationTakenName, $locationTaken, $dosis, $sideEffect){
+    if (empty($usersId) || empty($vaccineType || empty($locationTakenName) || empty($locationTakenName) || empty($locationTaken) || empty($dosis) || empty($sideEffect))){
+        return true;
+    }
+    return false;
 }
 
 function emptyInputLogin($username, $pwd){

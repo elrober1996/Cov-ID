@@ -23,6 +23,7 @@
       <div class="wrapper">
 <!--        <a href="index.php"><img src="img/logo-white.png" alt="Blogs logo"></a>-->
         <ul>
+            <li><img src="images/devUse/logo.png"></li>
             <li><a href="index.php">Home</a></li>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="covinfo.php">Covid News</a></li>
@@ -30,7 +31,9 @@
                 if(isset($_SESSION["useruid"])){
                     echo "<li><a href='profile.php'>Profile Page</a></li>";
                     echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
+                    echo "<li><a href='vaccinereport.php'>Vaccine Side Effects Report</a></li>";
                     echo "<li>Hello, ". $_SESSION["useruid"]."!</li>";
+//                    echo "<li>User ID, ". $_SESSION["userid"]."!</li>";
                 }
                 else{
                     echo "<li><a href='signup.php'>Sign up</a></li>";
