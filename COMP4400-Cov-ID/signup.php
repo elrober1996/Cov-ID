@@ -6,12 +6,27 @@ include_once 'header.php';
     <h2>Sign Up</h2>
     <div class="signup-form-form">
         <form action="includes/signup.inc.php" method="post">
-            <input type="text" name="name" placeholder="Full Name">
-            <input type="text" name="email" placeholder="Email" >
-            <input type="text" name="uid" placeholder="Username" >
-            <input type="password" name="pwd" placeholder="Password" >
-            <input type="password" name="pwdrepeat" placeholder="Repeat Password">
-            <button type="submit" name="submit">Sign Up</button>
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name:</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Full Name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Email" >
+            </div>
+            <div class="mb-3">
+                <label for="uid" class="form-label">Username:</label>
+                <input type="text" class="form-control" name="uid" id="uid" placeholder="Username" >
+            </div>
+            <div class="mb-3">
+                <label for="pwd" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Password" >
+            </div>
+            <div class="mb-3">
+                <label for="pwdrepeat" class="form-label">Repeat Password:</label>
+                <input type="password" class="form-control" name="pwdrepeat" id="pwdrepeat" placeholder="Repeat Password">
+            </div>
+            <button type="submit" class="btn btn-primary" name="submit">Sign Up</button>
         </form>
     </div>
 <!--    Maybe we can put did error in a pop message instead of like this, bootstrap does have away to do this.-->

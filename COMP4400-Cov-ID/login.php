@@ -6,9 +6,14 @@ include_once 'header.php';
     <h2>Log In</h2>
     <div class="signup-form-form">
         <form action="includes/login.inc.php" method="post">
-            <input type="text" class="form-control" name="uid" placeholder="Username or Email">
-            <br>
-            <input type="password" class="form-control" name="pwd" placeholder="Password" >
+            <div class="mb-3">
+                <label for="uid" class="form-label">Username/Email:</label>
+                <input type="text" class="form-control" id="uid" name="uid" placeholder="Username or Email">
+            </div>
+            <div class="mb-3">
+                <label for="uid" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" >
+            </div>
             <button type="submit" class="btn btn-primary" name="submit">Log In</button>
         </form>
     </div>

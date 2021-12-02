@@ -12,20 +12,20 @@
       In addition to that a potential area of reporting and information so that people can be informed about their community and make educated decisions regarding their health.</p>
 </section>
 
-<section class="index-categories">
-  <h2>Focus</h2>
-  <div class="index-categories-list">
-    <div>
-      <h3>Self-Reporting</h3>
-    </div>
-    <div>
-      <h3>Covid Tracking</h3>
-    </div>
-    <div>
-      <h3>Educational</h3>
-    </div>
-  </div>
-</section>
+<!--<section class="index-categories">-->
+<!--  <h2>Focus</h2>-->
+<!--  <div class="index-categories-list">-->
+<!--    <div>-->
+<!--      <h3>Self-Reporting</h3>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <h3>Covid Tracking</h3>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <h3>Educational</h3>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
 
 <?php
   include_once 'footer.php';

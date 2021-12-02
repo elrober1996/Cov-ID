@@ -195,6 +195,12 @@ function createSideEffectRecord($conn, $usersid, $vaccineType, $locationTakenNam
 //    exit();
 //}
 
+//function updateFormVisible($conn, $userid){
+//    if(recordExist($conn, $userid)){
+//
+//    }
+//}
+
 function emptySideEffect($vaccineType, $locationTakenName, $locationTaken, $dosis, $sideEffect){
     if (empty($usersId) || empty($vaccineType || empty($locationTakenName) || empty($locationTakenName) || empty($locationTaken) || empty($dosis) || empty($sideEffect))){
         return true;

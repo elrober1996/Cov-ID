@@ -40,7 +40,7 @@ include_once 'header.php';
                 <input type="date" class="form-control" id="vaccineDate"  name="vaccineDate" min="2020-11-15">
             </div>
             <div class="mb-3">
-                <label for="sideEffect" class="form-label">Race</label>
+                <label for="sideEffect" class="form-label">Side Effects</label>
                 <select class="form-select" aria-label="Default select example" id="sideEffect" name="sideEffect[]" multiple>
                     <option selected>Select side effects:</option>
                     <option value="tiredness">Tiredness</option>
